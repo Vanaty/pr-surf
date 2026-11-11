@@ -16,13 +16,13 @@ Points clés
 
 from __future__ import annotations
 
-from patchright.sync_api import BrowserContext, Patchright
+from patchright.sync_api import BrowserContext, Playwright
 
 from pr_surf.config import settings
 from pr_surf.logger import log
 
 
-def build_context(pw: Patchright) -> BrowserContext:
+def build_context(pw: Playwright) -> BrowserContext:
     """
     Lance un contexte Chromium persistant avec l'extension PR.surf.
 
