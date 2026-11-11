@@ -21,7 +21,7 @@ EXPOSE 5900 6080
 COPY requirements.txt ./requirements.txt
 COPY pyproject.toml ./pyproject.toml
 COPY README.md ./README.md
-COPY src/pr_surf ./pr_surf
+COPY src ./src
 COPY extensions ./extensions
 
 RUN python -m pip install --upgrade pip && \
@@ -30,4 +30,4 @@ RUN python -m pip install --upgrade pip && \
 
 VOLUME ["/app/chrome_profile"]
 
-CMD ["bash", "-lc", "Xvfb :99 -screen 0 1920x1080x24 >/dev/null 2>&1 & x11vnc -display :99 -forever -nopw -listen 0.0.0.0 -xkb -noxdamage >/dev/null 2>&1 & websockify --web=/usr/share/novnc/ 6080 localhost:5900 >/dev/null 2>&1 & exec python -m pr_surf.main"]
+CMD ["bash", "-lc", "Xvfb :99 -screen 0 1920x1080x24 >/dev/null 2>&1 & x11vnc -display :99 -forever -nopw -listen 0.0.0.0 -xkb -noxdamage >/dev/null 2>&1 & websockify --web=/usr/share/novnc/ 6080 localhost:5900 >/dev/null 2>&1 & cd /app/src & exec python -m pr_surf.main"]
