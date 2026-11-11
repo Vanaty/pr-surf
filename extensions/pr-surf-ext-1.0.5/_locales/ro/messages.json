@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf: navigare de PR.SOCIAL" },
+  "description": { "message": "Afișează automat site-urile de navigare PR.SOCIAL, într-o fereastră proprie, cât e pe ecran. Se conectează la cont cu un cod." }
+}

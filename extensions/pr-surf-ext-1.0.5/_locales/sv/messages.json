@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf: surfning av PR.SOCIAL" },
+  "description": { "message": "Visar PR.SOCIALs sajter för surfning automatiskt i ett eget fönster medan det är på skärmen. Ansluter till ditt konto med en kod." }
+}

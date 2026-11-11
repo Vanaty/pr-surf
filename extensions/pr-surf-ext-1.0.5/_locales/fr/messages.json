@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf : surf de PR.SOCIAL" },
+  "description": { "message": "Affiche les sites de PR.SOCIAL Surf, seule, dans sa fenêtre tant qu’elle est à l’écran. Se connecte à votre compte avec un code." }
+}

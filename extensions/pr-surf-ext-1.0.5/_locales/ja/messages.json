@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf: PR.SOCIALのサイト閲覧" },
+  "description": { "message": "PR.SOCIAL のサイト閲覧を、画面に表示されている間は専用のウィンドウで自動的に表示します。キーを使ってアカウントに接続します。" }
+}

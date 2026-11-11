@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf：PR.SOCIAL 网站浏览" },
+  "description": { "message": "在独立窗口中自动显示 PR.SOCIAL 网站浏览的页面，窗口打开期间持续运行。通过验证码连接您的账号。" }
+}

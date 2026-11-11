@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "pr-surf-bot"
+version = "1.0.0"
+description = "Automated PR.social surfing bot — drives the official PR.surf Chrome extension via Patchright"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+    # Stealth Playwright fork — bypasses webdriver/CDP detection flags
+    "patchright>=1.49.0",
+    # .env file loading
+    "python-dotenv>=1.0.0",
+    # Structured logging with colours
+    "loguru>=0.7.2",
+    # Automatic retry decorator
+    "tenacity>=8.2.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4.0",
+    "mypy>=1.9.0",
+]
+
+# Installs a `pr-surf` command in the venv's bin/
+[project.scripts]
+pr-surf = "pr_surf.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ── Ruff (linter + formatter) ─────────────────────────────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+# ── Mypy ──────────────────────────────────────────────────────────────────────
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true

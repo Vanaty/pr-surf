@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PR Surf</title>
+<style>
+/* the page between two sites follows the computer's light or dark, as the popup does: a dark flash between light sites tires the eyes */
+:root{color-scheme:light dark;--bg:#f4f5f8;--ink:#0f1115;--ink2:#5b6270;--g1:rgba(249,115,22,.10);--g2:rgba(99,102,241,.07)}
+@media (prefers-color-scheme:dark){:root{--bg:#07080b;--ink:#f4f5f8;--ink2:#adb3c0;--g1:rgba(249,115,22,.14);--g2:rgba(99,102,241,.10)}}
+html,body{margin:0;height:100%}
+body{display:grid;place-items:center;background:radial-gradient(900px 520px at 100% -8%,var(--g1),transparent 62%),radial-gradient(760px 520px at -6% -4%,var(--g2),transparent 60%),var(--bg);
+  font:500 15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+.b{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:24px}
+.m{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(160deg,#2b2f38,#0d0f14);font-weight:800;font-size:21px;letter-spacing:-.02em;color:#fff;box-shadow:0 18px 40px -16px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08)} /* the mark of the icon (the site's own) */
+.t{font-size:18px;font-weight:700}.s{color:var(--ink2);max-width:420px}
+</style></head>
+<body><div class="b"><div class="m">PR</div><div class="t" id="t">PR Surf</div><div class="s" id="s"></div></div>
+<script type="module" src="stage.js"></script></body></html>

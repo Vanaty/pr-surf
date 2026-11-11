@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "short_name": "PR Surf",
+  "description": "__MSG_description__",
+  "version": "1.0.5",
+  "default_locale": "en",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    },
+    "default_title": "PR Surf"
+  },
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "tabs",
+    "scripting",
+    "power",
+    "idle",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://api.pr.social/*",
+    "https://pr.social/*"
+  ],
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwqL8Xx8x/aDZArDadvTakxxCqgHOsmp3CZjV60cMsXkZXpQuUdwoTFslGkzHBJe7S16SfNpn7niXXdrkCpk0P3UCwAeuiND/ZnNhTC6GJCQKMYr7VTM1jDEzMdKS4HoRrRwldn7JEtDVsL0pgqFafkUAKFtE6igeWUFCu+uSDZEq4SsnulZTh0GZc+68SQx12F2JPIBT8+6FJM5nWUt6cOcftACBDo65OOVvgHE/W60VWvJtNaON7KCqyZGhqqbHTLQh5tDjNyYiEghoW5WYO1dZUmCrZK0lt4MGq3CO33HnqhsOxNH/atQpzkNHU4GqKB7QWYpN7nnMUo73VvDjiQIDAQAB"
+}

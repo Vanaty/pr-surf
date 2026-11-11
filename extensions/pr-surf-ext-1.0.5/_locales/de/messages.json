@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf: Surfen von PR.SOCIAL" },
+  "description": { "message": "Zeigt die Websites von PR.SOCIAL automatisch im eigenen Fenster, solange es offen ist. Verbindet sich per Code mit Ihrem Konto." }
+}

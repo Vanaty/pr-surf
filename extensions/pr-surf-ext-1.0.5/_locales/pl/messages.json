@@ -1,0 +1,4 @@
+{
+  "name": { "message": "PR Surf: surfowanie PR.SOCIAL" },
+  "description": { "message": "Samodzielnie pokazuje strony reklamodawców z surfowania PR.SOCIAL w osobnym oknie, gdy widać. Łączy się z kontem za pomocą kodu." }
+}
