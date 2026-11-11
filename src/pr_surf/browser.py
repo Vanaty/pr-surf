@@ -55,6 +55,10 @@ def build_context(pw: Playwright) -> BrowserContext:
             # Charge l'extension non empaquetée
             f"--load-extension={ext_path}",
             f"--disable-extensions-except={ext_path}",
+            # Compatibilité conteneur / exécution root
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
             # Ergonomie
             "--start-maximized",
             "--no-first-run",

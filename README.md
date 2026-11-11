@@ -52,7 +52,39 @@ pip install -e .
 patchright install chromium
 ```
 
-### 4. (Optionnel) Configurer `.env`
+### 4. Docker
+
+Le projet inclut un `Dockerfile` et un `docker-compose.yml` prêts à l’emploi.
+
+#### Avec VNC / noVNC
+
+Le conteneur lance un serveur Xvfb + VNC + noVNC, ce qui permet d’ouvrir l’interface Chrome depuis un navigateur web.
+
+```bash
+docker build -t pr-surf .
+docker run --rm -it \
+  -p 6080:6080 \
+  -p 5900:5900 \
+  -v "$PWD/chrome_profile:/app/chrome_profile" \
+  -v "$PWD/extensions:/app/extensions" \
+  pr-surf
+```
+
+Ou avec Docker Compose :
+
+```bash
+docker compose up --build
+```
+
+Ensuite, ouvre :
+
+```text
+http://localhost:6080/vnc.html?autoconnect=1&resize=remote&host=localhost
+```
+
+> Le conteneur lance Chromium via Xvfb, puis expose le bureau par VNC/noVNC pour que l’extension PR.surf reste visible dans un vrai contexte navigateur.
+
+### 5. (Optionnel) Configurer `.env`
 
 ```bash
 copy .env.example .env
