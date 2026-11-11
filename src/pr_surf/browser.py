@@ -61,6 +61,7 @@ def build_context(pw: Playwright) -> BrowserContext:
             "--no-default-browser-check",
             "--disable-popup-blocking",
         ],
+        permissions=["notifications"],
     )
 
     log.info("Contexte navigateur lancé.")

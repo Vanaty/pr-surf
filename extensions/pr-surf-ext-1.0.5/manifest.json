@@ -35,9 +35,7 @@
   ],
   "host_permissions": [
     "https://api.pr.social/*",
-    "https://pr.social/*"
-  ],
-  "optional_host_permissions": [
+    "https://pr.social/*",
     "<all_urls>"
   ],
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwqL8Xx8x/aDZArDadvTakxxCqgHOsmp3CZjV60cMsXkZXpQuUdwoTFslGkzHBJe7S16SfNpn7niXXdrkCpk0P3UCwAeuiND/ZnNhTC6GJCQKMYr7VTM1jDEzMdKS4HoRrRwldn7JEtDVsL0pgqFafkUAKFtE6igeWUFCu+uSDZEq4SsnulZTh0GZc+68SQx12F2JPIBT8+6FJM5nWUt6cOcftACBDo65OOVvgHE/W60VWvJtNaON7KCqyZGhqqbHTLQh5tDjNyYiEghoW5WYO1dZUmCrZK0lt4MGq3CO33HnqhsOxNH/atQpzkNHU4GqKB7QWYpN7nnMUo73VvDjiQIDAQAB"
