@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/playwright/python:v1.49.1-noble
 
-WORKDIR /app
+WORKDIR /app/src
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -30,4 +30,4 @@ RUN python -m pip install --upgrade pip && \
 
 VOLUME ["/app/chrome_profile"]
 
-CMD ["bash", "-lc", "Xvfb :99 -screen 0 1920x1080x24 >/dev/null 2>&1 & x11vnc -display :99 -forever -nopw -listen 0.0.0.0 -xkb -noxdamage >/dev/null 2>&1 & websockify --web=/usr/share/novnc/ 6080 localhost:5900 >/dev/null 2>&1 & cd /app/src & exec python -m pr_surf.main"]
+CMD ["bash", "-lc", "cd /app/src && Xvfb :99 -screen 0 1920x1080x24 >/dev/null 2>&1 & x11vnc -display :99 -forever -nopw -listen 0.0.0.0 -xkb -noxdamage >/dev/null 2>&1 & websockify --web=/usr/share/novnc/ 6080 localhost:5900 >/dev/null 2>&1 & exec python -m pr_surf.main"]
