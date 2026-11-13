@@ -46,11 +46,18 @@ def build_context(pw: Playwright) -> BrowserContext:
     profile = str(settings.chrome_profile_dir)
     log.info(f"Profil Chrome        : {profile}")
     log.info(f"Extension PR.surf    : {ext_path}")
+    if settings.http_proxy:
+        log.info(f"Proxy HTTP           : {settings.http_proxy}")
 
     context = pw.chromium.launch_persistent_context(
         user_data_dir=profile,
         headless=False,          # obligatoire avec les extensions MV3
         no_viewport=True,        # utilise la taille réelle de la fenêtre
+        proxy={
+            "server": settings.http_proxy,
+            "username": settings.http_proxy_username,
+            "password": settings.http_proxy_password,
+        } if settings.http_proxy else None,
         args=[
             # Charge l'extension non empaquetée
             f"--load-extension={ext_path}",
@@ -67,6 +74,7 @@ def build_context(pw: Playwright) -> BrowserContext:
         ],
         permissions=["notifications"],
     )
+
 
     log.info("Contexte navigateur lancé.")
     return context

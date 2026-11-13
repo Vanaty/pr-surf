@@ -46,6 +46,7 @@ class Config:
         )
     )
 
+
     # Logging
     log_level: str = field(
         default_factory=lambda: os.getenv("LOG_LEVEL", "INFO").upper()
@@ -61,6 +62,17 @@ class Config:
         default_factory=lambda: int(os.getenv("PAIR_TIMEOUT_S", "300"))
     )
 
+    # Proxy
+    http_proxy: str = field(
+        default_factory=lambda: os.getenv("HTTP_PROXY", "")
+    )
+    
+    http_proxy_username: str|None = field(
+        default_factory=lambda: os.getenv("HTTP_PROXY_USERNAME", None)
+    )
+    http_proxy_password: str|None = field(
+        default_factory=lambda: os.getenv("HTTP_PROXY_PASSWORD", None)
+    )
 
 # Singleton — importez `settings` partout.
 settings = Config()
