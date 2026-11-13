@@ -111,12 +111,11 @@ def _open_popup(context: BrowserContext, popup_url: str) -> Page:
 
 def _popup_is_connected(popup: Page) -> bool:
     """True si le popup affiche déjà l'interface d'un compte lié."""
-    for selector in ("button[data-a='start']", ".money", "button[data-a='stop']"):
-        try:
-            if popup.locator(selector).count() > 0:
-                return True
-        except Exception:
-            pass
+    try:
+        if popup.locator("button[data-a='start'], .money, button[data-a='stop'], button[data-a='pause']").count() > 0:
+            return True
+    except Exception:
+        pass
     return False
 
 
@@ -261,7 +260,12 @@ def _start_surf(popup: Page) -> None:
     """
     log.info("Clic sur 'Start' pour lancer le surf…")
 
-    start_btn = popup.locator("button[data-a='start']")
+    active_btn = popup.locator("button[data-a='pause']")
+    if active_btn.count() > 0:
+        log.info("Le surf est déjà actif — pas besoin de cliquer sur Start.")
+        return
+
+    start_btn = popup.locator("button[data-a='start'], button[data-a='resume']")
     try:
         start_btn.wait_for(timeout=10_000)
     except PWTimeoutError:

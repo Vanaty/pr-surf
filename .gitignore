@@ -185,3 +185,4 @@ cython_debug/
 
 # extensions/*
 chrome_profile/*
+debug_*.png
