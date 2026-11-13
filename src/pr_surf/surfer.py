@@ -36,10 +36,11 @@ def run_surf(context: BrowserContext) -> None:
     Flux complet :
 
     1. Découvrir l'ID de l'extension → ouvrir son popup.
-    2. Déclencher le pairing → afficher le code dans le terminal.
-    3. Attendre que l'utilisateur lie son compte sur pr.social.
-    4. Cliquer Start → surf autonome.
-    5. Keep-alive.
+    2. Vérifier si le compte est déjà lié.
+    3. Sinon : déclencher le pairing → afficher le code dans le terminal.
+    4. Attendre que l'utilisateur lie son compte sur pr.social.
+    5. Cliquer Start → surf autonome.
+    6. Keep-alive.
     """
     ext_id = _get_extension_id(context)
     log.info(f"ID extension : {ext_id}")
@@ -47,13 +48,16 @@ def run_surf(context: BrowserContext) -> None:
     popup_url = f"chrome-extension://{ext_id}/popup.html"
     popup = _open_popup(context, popup_url)
 
-    pair_info = _trigger_pairing(popup)
+    if _popup_is_connected(popup):
+        log.info("Compte déjà lié détecté dans le popup — on ne relance pas le jumelage.")
+    else:
+        pair_info = _trigger_pairing(popup)
 
-    # ── Affichage clair du code pour l'utilisateur ────────────────────────────
-    _print_pair_instructions(pair_info)
+        # ── Affichage clair du code pour l'utilisateur ────────────────────────────
+        _print_pair_instructions(pair_info)
 
-    # ── Attente de la liaison manuelle ────────────────────────────────────────
-    _wait_for_connected(popup)
+        # ── Attente de la liaison manuelle ────────────────────────────────────────
+        _wait_for_connected(popup)
 
     # ── Démarrage du surf ─────────────────────────────────────────────────────
     _start_surf(popup)
@@ -103,6 +107,17 @@ def _open_popup(context: BrowserContext, popup_url: str) -> Page:
     page.goto(popup_url, wait_until="domcontentloaded")
     page.wait_for_timeout(2_000)
     return page
+
+
+def _popup_is_connected(popup: Page) -> bool:
+    """True si le popup affiche déjà l'interface d'un compte lié."""
+    for selector in ("button[data-a='start']", ".money", "button[data-a='stop']"):
+        try:
+            if popup.locator(selector).count() > 0:
+                return True
+        except Exception:
+            pass
+    return False
 
 
 # ── Étape 3 : Déclencher le pairing ──────────────────────────────────────────
