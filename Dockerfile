@@ -16,24 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         x11vnc \
         novnc \
         websockify \
-        x11-utils \
-        xauth \
-        libnss3 \
-        libatk1.0-0 \
-        libatk-bridge2.0-0 \
-        libcups2 \
-        libdrm2 \
-        libxkbcommon0 \
-        libxcomposite1 \
-        libxdamage1 \
-        libxfixes3 \
-        libxrandr2 \
-        libgbm1 \
-        libpango-1.0-0 \
-        libcairo2 \
-        libasound2 \
-        libx11-xcb1 \
-        fonts-liberation \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
@@ -47,7 +29,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
     && python -m pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt \
     && python -m patchright install --with-deps chromium \
-    && rm -rf /root/.cache /tmp/*
+    && rm -rf /root/.cache/pip /tmp/*
 
 # Persistent Chrome profile
 VOLUME ["/app/chrome_profile"]
