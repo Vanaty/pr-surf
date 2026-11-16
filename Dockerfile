@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright/python:v1.65.2-noble
+FROM python:3.12-slim
 
 WORKDIR /app
 
@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         x11vnc \
         novnc \
         websockify \
-        x11-utils \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
