@@ -59,6 +59,18 @@ trap cleanup EXIT INT TERM
 # Give services a moment to bind
 sleep 1
 
+# Clean Chromium profile  locks (common after unclear container stop/volume reuse)
+PROFILE_DIR= "${CHROME_PROFILE_DIR:-/app/chrome_profile}"
+if [ -d "${PROFILE_DIR}" ]; then
+  echo "[entrypoint] Cleaning Chromium profile locks in ${PROFILE_DIR}..."
+  rm -f \
+  "${PROFILE_DIR}/SingletonLock" \
+  "${PROFILE_DIR}/SingletonSocket" \
+  "${PROFILE_DIR}/SingletonCookie" \
+  "${PROFILE_DIR}/lockfile" \
+  2>/dev/null || true
+fi
+
 echo "[entrypoint] noVNC ready → http://<host>:${NOVNC_PORT}/vnc.html"
 echo "[entrypoint] Launching application..."
 
